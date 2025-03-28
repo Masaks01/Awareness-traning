@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Velkommen</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body class="landing-body">
+  <div class="container">
+    <div class="info-card">
+      <p>Informasjon om opplæringsverktøyet</p>
+    </div>
+
+    <div class="user-login">
+      <input type="text" id="username" placeholder="Skriv inn brukernavn" />
+      <button onclick="fortsett()">Fortsett ➝</button>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+ 
+</body>
+</html>
