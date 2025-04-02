@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Sosial manipulasjon</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/multiple_choice.css') }}">
+</head>
+<body>
+    <a id="dashboard-link" href="/dashbord">← Tilbake til dashboard</a>
+    <div id="username-display"></div>
+    
+    <div class="question-wrapper">
+        <div class="scenario-bubble">
+            <p id="scenario-text">Laster inn scenario...</p>
+        </div>
+    </div>
+    
+    <div class="answer-wrapper">
+        <button class="answer-button">Alternativ 1</button>
+        <button class="answer-button">Alternativ 2</button>
+        <button class="answer-button">Alternativ 3</button>
+    </div>    
+
+    <script src="{{ url_for('static', filename='js/multiple_choice.js') }}"></script>
+</body>
+</html>

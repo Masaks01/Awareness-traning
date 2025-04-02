@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Sveip trusselen vekk</title>
+    <link rel="stylesheet" href="/static/css/safe_or_not.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+</head>
+<body>
+    <a id="dashboard-link" href="/dashbord">← Tilbake til dashboard</a>
+    <div id="username-display"></div>
+
+    <div class="simulator">
+        <div class="screen">
+            <p id="epost">Laster inn...</p>
+        </div>
+        <div class="choice-buttons">
+            <button onclick="answer(false)" class="btn-unsafe">🚩</button>
+            <button onclick="answer(true)" class="btn-safe">✅</button>
+        </div>
+    </div>
+    
+    <script src="/static/js/safe_or_not.js"></script>
+</body>
+</html>

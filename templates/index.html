@@ -6,19 +6,26 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
-<body class="landing-body">
-  <div class="container">
-    <div class="info-card">
-      <p>Informasjon om opplæringsverktøyet</p>
+<body class="landing-page">
+  <div class="layout-container">
+    <div class="info-panel">
+      <h1>Opplæringsverktøy for digital sikkerhet</h1>
+      <p>
+        I vår digitale hverdag, med stadig mer sofistikerte trusler, er kunnskap og bevissthet det beste forsvaret. 
+        Dette opplæringsverktøyet gir deg en praktisk og engasjerende innføring i hvordan du kan gjenkjenne phishing og andre former for digitale trusler.
+      </p>
+      <p>
+        Verktøyet skal gi deg innføring i hvordan du kan sikre
+        deg selv og dine data - både privat og på jobb
+      </p>
     </div>
 
-    <div class="user-login">
-      <input type="text" id="username" placeholder="Skriv inn brukernavn" />
-      <button onclick="go()">Fortsett ➝</button>
+    <div class="login-form">
+      <input type="text" id="username-input" placeholder="Skriv inn brukernavn" />
+      <button onclick="handleLogin()">Fortsett ➝</button>
     </div>
   </div>
 
   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
- 
 </body>
 </html>
