@@ -1,0 +1,146 @@
+/* Lås høyden og fjern scroll */
+html, body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    text-align: center;
+}
+
+/* Sentral innpakning */
+.simulator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 0.5rem; /* Gir mellomrom mellom epost og knapper */
+}
+
+/* Skjermen med epost */
+.screen {
+    background-color: #ffffff;
+    width: 320px;
+    min-height: 480px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 2rem 1.5rem;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.6;
+    color: #111;
+}
+
+/* Knappene */
+.choice-buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.btn-safe,
+.btn-unsafe {
+    font-size: 2rem;
+    padding: 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-safe:hover,
+.btn-unsafe:hover {
+    transform: scale(1.2);
+}
+
+/* Animasjoner for sveiping */
+.screen.animate-left {
+    animation: swipeLeft 0.45s ease-out forwards;
+}
+.screen.animate-right {
+    animation: swipeRight 0.45s ease-out forwards;
+}
+
+@keyframes swipeLeft {
+    0% {
+        transform: translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-300px) rotate(-15deg);
+        opacity: 0;
+    }
+}
+
+@keyframes swipeRight {
+    0% {
+        transform: translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(300px) rotate(15deg);
+        opacity: 0;
+    }
+}
+
+/* Øvrige elementer (valgfritt – beholdes fra originalen) */
+.container {
+    display: block;
+    width: 100%;
+    padding-top: 4rem;
+}
+
+.kort p {
+    color: #000;
+    font-size: 1.1rem;
+    white-space: pre-wrap;
+}
+
+.kort {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    min-height: 150px;
+    margin: 1rem auto;
+    max-width: 500px;
+    width: 90%;
+}
+
+.valg button {
+    padding: 1rem 2rem;
+    margin: 0 1rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.valg button:hover {
+    opacity: 0.8;
+}
+
+.valg button:first-child {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.valg button:last-child {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.tilbakemelding {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.resultat {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    color: #333;
+}

@@ -1,0 +1,174 @@
+/* ========== Fellesstil (quiz-deler, spørsmål etc.) ========== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #00467f, #111);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dashboard Link */
+#dashboard-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+#dashboard-link:hover {
+    opacity: 1;
+}
+
+/* Quiz Container */
+#questions-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Question Styling */
+.question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.question h3 {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.question p {
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+/* Alternatives Styling */
+#alternativer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.alternative-container {
+    display: flex;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.alternative-container:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.alternative-container input[type="radio"] {
+    margin-right: 15px;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.alternative-container input[type="radio"]:checked {
+    background-color: white;
+    border: 6px solid #00467f;
+}
+
+.alternative-container label {
+    flex-grow: 1;
+    cursor: pointer;
+    text-align: left;
+    color: white;
+}
+
+/* Videre Button */
+#videre-btn {
+    margin-top: 30px;
+    padding: 12px 24px;
+    background-color: white;
+    color: #00467f;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+#videre-btn:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+/* Feedback Styling */
+#feedback {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#feedback p {
+    margin: 0;
+}
+
+/* Responsivitet */
+@media screen and (max-width: 768px) {
+    #questions-container {
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .question h3 {
+        font-size: 1em;
+    }
+
+    .question p {
+        font-size: 0.9em;
+    }
+
+    .alternative-container {
+        padding: 10px 12px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #dashboard-link {
+        font-size: 12px;
+        top: 10px;
+        left: 10px;
+    }
+
+    #questions-container {
+        width: 95%;
+        padding: 0 10px;
+    }
+
+    .alternative-container {
+        padding: 8px 10px;
+    }
+
+    #videre-btn {
+        font-size: 0.9em;
+        padding: 10px 20px;
+    }
+}
