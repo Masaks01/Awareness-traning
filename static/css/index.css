@@ -8,7 +8,6 @@ body {
   align-items: center;
 }
 
-/* Hovedcontainer */
 .layout-container {
   display: flex;
   flex-direction: row;
@@ -37,7 +36,6 @@ body {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Brukernavn + knapp */
 .login-form {
   display: flex;
   flex-direction: column;
@@ -69,6 +67,12 @@ body {
 
 .login-form button:hover {
   background-color: #eee;
+}
+
+.login-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em; 
 }
 
 @media (max-width: 768px) {
