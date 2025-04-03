@@ -21,8 +21,19 @@
     </div>
 
     <div class="login-form">
-      <input type="text" id="username-input" placeholder="Skriv inn brukernavn" />
-      <button onclick="handleLogin()">Fortsett ➝</button>
+      <h2 id="form-title">Logg inn</h2>
+
+      <form id="login-form" class="login-form-wrapper">
+        <input type="text" id="username" placeholder="Brukernavn" aria-label="Brukernavn" autocomplete="off" />
+        <input type="password" id="password" placeholder="Passord" aria-label="Passord" autocomplete="new-password" />
+        <button id="submit-button" type="submit">Logg inn</button>
+      </form>      
+
+      <p id="toggle-form">
+        Har du ikke en bruker? <a href="#" id="toggle-link">Registrer deg</a>
+      </p>
+
+      <p id="login-message" class="login-message"></p>
     </div>
   </div>
 
