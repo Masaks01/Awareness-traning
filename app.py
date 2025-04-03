@@ -62,6 +62,32 @@ def result():
 def routines():
     return render_template('routines.html')
 
+@app.route('/sertifisering')
+@login_required
+def certificates():
+    return render_template("certificates.html")
+
+@app.route('/api/certificates')
+@login_required
+def get_certificates():
+    db = get_db_connection()
+    cursor = db.cursor(dictionary=True)
+
+    username = session.get("username")
+
+    cursor.execute("""
+        SELECT module_name, completed, last_updated
+        FROM user_progress
+        WHERE username = %s AND completed = 1
+        ORDER BY last_updated DESC
+    """, (username,))
+
+    data = cursor.fetchall()
+    cursor.close()
+    db.close()
+
+    return jsonify(data)
+
 @app.route('/api/register', methods=['POST'])
 def register_user():
     data = request.json
