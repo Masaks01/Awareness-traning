@@ -92,9 +92,11 @@ function showResult() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const name = localStorage.getItem("brukernavn");
-  const display = document.getElementById("username-display");
-  if (name && display) {
-    display.innerText = `Bruker: ${name}`;
+  const username = localStorage.getItem("brukernavn");
+  if (username) {
+      const display = document.getElementById("username-display");
+      if (display) {
+          display.textContent = `Bruker: ${username}`;
+      }
   }
 });

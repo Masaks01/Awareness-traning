@@ -66,13 +66,28 @@ function showResult() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const name = localStorage.getItem("brukernavn");
-    if (name) {
-        const view = document.getElementById("username-display");
-        if (view) {
-            view.innerText = `Bruker: ${name}`;
+    const username = localStorage.getItem("brukernavn");
+    if (username) {
+        const display = document.getElementById("username-display");
+        if (display) {
+            display.textContent = `Bruker: ${username}`;
         }
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const username = localStorage.getItem("brukernavn");
+    if (username) {
+        const display = document.getElementById("username-display");
+        if (display) {
+            display.textContent = `Bruker: ${username}`;
+        }
+    }
+
+    document.getElementById('unsafe-button').addEventListener('click', () => answer(false));
+    document.getElementById('safe-button').addEventListener('click', () => answer(true));
+
+    window.onload = fetchAll;
 });
 
 window.onload = fetchAll;

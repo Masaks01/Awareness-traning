@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (username) {
         const display = document.getElementById("username-display");
         if (display) {
-            display.innerText = `Bruker: ${username}`;
+            display.textContent = `Bruker: ${username}`;
         }
     }
 });
@@ -33,10 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(res => res.json())
         .then(progress => {
             const completedModules = new Set(progress.filter(p => p.completed).map(p => p.module_name));
+
             document.querySelectorAll("a[href]").forEach(link => {
                 const match = link.getAttribute("href").match(/\/(\w+)$/);
                 if (match && completedModules.has(match[1])) {
-                    link.innerHTML += " ✅";
+                    link.innerHTML += "";
                     link.classList.add("completed");
                 }
             });
@@ -56,5 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const y = centerY + radius * Math.sin(angle);
         button.style.left = `${x}px`;
         button.style.top = `${y}px`;
+
+        button.addEventListener('click', () => {
+            const moduleName = button.textContent.trim();
+            let completedModules = JSON.parse(localStorage.getItem('completedModules')) || [];
+            
+            if (!completedModules.includes(moduleName)) {
+                completedModules.push(moduleName);
+                localStorage.setItem('completedModules', JSON.stringify(completedModules));
+                button.classList.add('completed');             
+            }
+        });
     });
 });

@@ -17,9 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
         ? "Modulen er bestått, gratulerer!"
         : "Modulen er ikke bestått, prøv igjen!";
 
-    const name = localStorage.getItem("brukernavn");
-    const display = document.getElementById("username-display");
-    if (name && display) {
-        display.innerText = `Bruker: ${name}`;
+    const username = localStorage.getItem("brukernavn");
+    if (username) {
+        const display = document.getElementById("username-display");
+        if (display) {
+            display.textContent = `Bruker: ${username}`;
+        }
+    }
+
+    const dashboardButton = document.getElementById("dashboard-button");
+    if (dashboardButton) {
+        dashboardButton.addEventListener("click", function() {
+            window.location.href = "/dashbord";
+        });
     }
 });
