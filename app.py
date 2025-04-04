@@ -76,7 +76,7 @@ def get_certificates():
     username = session.get("username")
 
     cursor.execute("""
-        SELECT module_name, completed, last_updated
+        SELECT module_name, completed, last_updated, score
         FROM user_progress
         WHERE username = %s AND completed = 1
         ORDER BY last_updated DESC
