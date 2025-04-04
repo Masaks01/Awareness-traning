@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Sveip trusselen vekk</title>
-    <link rel="stylesheet" href="/static/css/safe_or_not.css">
-    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/safe_or_not.css') }}">
 </head>
 <body>
     <a id="dashboard-link" href="/dashbord">← Tilbake til dashboard</a>
@@ -20,6 +20,7 @@
         </div>
     </div>
     
-    <script src="/static/js/safe_or_not.js"></script>
+    <script src="{{ url_for('static', filename='js/safe_or_not.js') }}"></script>
+
 </body>
 </html>

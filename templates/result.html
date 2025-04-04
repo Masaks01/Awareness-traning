@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Resultat</title>
-    <link rel="stylesheet" href="/static/css/result.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
 </head>
 <body>
     <a id="dashboard-link" href="/dashbord">← Tilbake til dashboard</a>
@@ -16,5 +17,7 @@
         <button id="dashboard-button">Til dashbord</button>
     </div>
 </body>
-<script src="/static/js/result.js"></script>
+
+<script src="{{ url_for('static', filename='js/result.js') }}"></script>
+
 </html>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Rutiner</title>
-    <link rel="stylesheet" href="/static/css/routines.css">
-    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/routines.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
 </head>
 <body>
     <a id="dashboard-link" href="/dashbord">← Tilbake til dashboard</a>
@@ -23,34 +23,65 @@
         <div class="tab-content" id="reporting" style="display: flex;">
             <div class="step">
                 <h2>1.</h2>
-                <h3>Bytt passord</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
+                <p>Bytt passord</p>
             </div>
             <div class="step">
                 <h2>2.</h2>
-                <h3>Rapporter</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
+                <p>Rapporter</p>
             </div>
             <div class="step">
                 <h2>3.</h2>
-                <h3>Slett</h3>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
+                <p>Slett</p>
             </div>
         </div>
 
         <div class="tab-content" id="password">
-
+            <div class="step">
+                <h2>1.</h2>
+                <p>Bytt passord</p>
+            </div>
+            <div class="step">
+                <h2>2.</h2>
+                <p>Rapporter</p>
+            </div>
+            <div class="step">
+                <h2>3.</h2>
+                <p>Slett</p>
+            </div>        
         </div>
 
         <div class="tab-content" id="indicators">
-            
+            <div class="step">
+                <h2>1.</h2>
+                <p>Bytt passord</p>
+            </div>
+            <div class="step">
+                <h2>2.</h2>
+                <p>Rapporter</p>
+            </div>
+            <div class="step">
+                <h2>3.</h2>
+                <p>Slett</p>
+            </div>
         </div>
 
         <div class="tab-content" id="prevention">
-            
+            <div class="step">
+                <h2>1.</h2>
+                <p>Bytt passord</p>
+            </div>
+            <div class="step">
+                <h2>2.</h2>
+                <p>Rapporter</p>
+            </div>
+            <div class="step">
+                <h2>3.</h2>
+                <p>Slett</p>
+            </div>
         </div>
     </div>
 
-    <script src="/static/js/routines.js"></script>
+    <script src="{{ url_for('static', filename='js/routines.js') }}"></script>
+
 </body>
 </html>
