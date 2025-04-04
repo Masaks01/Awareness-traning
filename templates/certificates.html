@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <title>Sertifikater</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='/css/certificates.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/common.css') }}">
 </head>
 <body>
+    <a id="dashboard-link" href="/dashbord">← Tilbake til dashboard</a>
+    <div id="username-display"></div>
+
     <div class="certificate-container">
         <h1>Dine Sertifikater</h1>
         <table class="certificate-table" id="certificate-table">
             <thead>
                 <tr>
-                    <th>Modulnavn</th>
+                    <th>Modul</th>
                     <th>Fullført</th>
                     <th>Dato</th>
                 </tr>
