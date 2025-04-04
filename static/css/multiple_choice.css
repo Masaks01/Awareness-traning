@@ -1,67 +1,158 @@
 html, body {
     height: 100%;
-    min-height: 100vh;
-    overflow: hidden;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    background: #eef5f9 url('/static/images/bakgrunn_sosial_manipulasjon.png') center/cover no-repeat;
+    opacity: 1;
+    animation: fadeIn 0.8s ease-in-out forwards;
 }
 
-body {
-    background: linear-gradient(to bottom, #004b8d, #0b0f14);
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
+#dashboard-link, #username-display {
+    color: #333;
 }
 
 .question-wrapper {
-    margin: 2rem 0;
-    max-width: 800px;
-    text-align: center;
-    padding-top: 80px;
+    position: absolute;
+    top: 18%;
+    right: 10%;
+    width: 40%;
+    text-align: left;
+    z-index: 5;
 }
 
 .scenario-bubble {
-    background: #f0f0f0;
-    border-radius: 20px;
-    padding: 1.5rem;
-    font-size: 1.2rem;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 1.8rem 2rem;
+    font-size: 1.1rem;
+    color: #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     position: relative;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    color: #222;
+    max-width: 550px;
+    line-height: 1.5;
 }
 
 .scenario-bubble::after {
     content: "";
     position: absolute;
-    bottom: -20px;
-    left: 60px;
-    border-width: 10px;
-    border-style: solid;
-    border-color: #f0f0f0 transparent transparent transparent;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 12px solid transparent;
+    border-top-color: #ffffff;
+    border-bottom: 0;
+}
+
+.character-wrapper {
+    position: absolute;
+    top: calc(20% + 180px);
+    right: 30%;
+    z-index: 4;
+}
+
+.character-image {
+    width: 70px;
+    height: 70px;
+    display: block;
+    border-radius: 50%;
+    scale: 2.8;
 }
 
 .answer-wrapper {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    gap: 1rem;
     justify-content: center;
-    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1100px;
+    z-index: 5;
 }
 
 .answer-button {
-    background: white;
-    border: none;
-    padding: 1rem 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
     font-size: 1rem;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     cursor: pointer;
-    transition: 0.2s ease;
-    max-width: 250px;
+    transition: all 0.2s ease;
+    flex: 1;
+    text-align: center;
+    max-width: 350px;
+    min-width: 270px;
 }
 
 .answer-button:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.desk-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+    .answer-wrapper {
+        width: 90%;
+        gap: 1.2rem;
+    }
+    .answer-button { min-width: 220px; }
+    .character-wrapper { right: 25%; }
+}
+
+@media (max-width: 900px) {
+    .question-wrapper {
+        width: 70%;
+        right: 15%;
+    }
+    .answer-wrapper {
+        flex-direction: column;
+        align-items: center;
+        bottom: 12%;
+        gap: 0.8rem;
+    }
+    .answer-button {
+        width: 80%;
+        max-width: 450px;
+    }
+    .character-wrapper {
+        top: calc(20% + 150px);
+        right: 20%;
+    }
+}
+
+@media (max-width: 600px) {
+    .question-wrapper {
+        width: 90%;
+        right: 5%;
+        top: 15%;
+    }
+    .scenario-bubble {
+        font-size: 1rem;
+        padding: 1.2rem 1.5rem;
+    }
+    .scenario-bubble::after {
+        bottom: -10px;
+        border-width: 10px;
+    }
+    .answer-button {
+        padding: 1rem;
+        font-size: 0.95rem;
+        width: 90%;
+    }
+    .character-wrapper {
+        top: calc(20% + 120px);
+        right: 15%;
+        scale: 0.8;
+    }
+    .character-image { scale: 2; }
 }
