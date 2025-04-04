@@ -75,28 +75,15 @@ function showResult() {
   sessionStorage.setItem("scorePercent", percent);
   sessionStorage.setItem("moduleName", "dra_og_slipp");
 
-  const username = localStorage.getItem("brukernavn");
-  if (username) {
-    fetch('/api/progresjon', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: username,
-        module_name: 'dra_og_slipp',
-        completed: percent >= 70
-      })
-    });
-  }
-
   window.location.href = "/resultat";
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const username = localStorage.getItem("brukernavn");
   if (username) {
-      const display = document.getElementById("username-display");
-      if (display) {
-          display.textContent = `Bruker: ${username}`;
-      }
+    const display = document.getElementById("username-display");
+    if (display) {
+      display.textContent = `Bruker: ${username}`;
+    }
   }
 });

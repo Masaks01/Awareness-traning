@@ -50,17 +50,7 @@ function displayResult() {
   sessionStorage.setItem("moduleName", "sosial_manipulasjon");
 
   const username = localStorage.getItem("brukernavn");
-  if (username) {
-    fetch('/api/progresjon', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: username,
-        module_name: "sosial_manipulasjon",
-        completed: passed
-      })
-    });
-  }
+  
 
   window.location.href = "/resultat";
 }

@@ -28,7 +28,6 @@ function answer(isSafe) {
     if (correct) correctAnswers++;
 
     const screen = document.querySelector(".screen");
-
     const direction = isSafe ? "animate-right" : "animate-left";
     screen.classList.add(direction);
 
@@ -47,33 +46,12 @@ function showResult() {
 
     const score = correctAnswers / questions.length;
     const percent = Math.round(score * 100);
-    const completed = score >= 0.7;
-    const username = localStorage.getItem("brukernavn");
-
-    fetch('/api/progresjon', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            username: username,
-            module_name: 'Sveip_trusselen_vekk',
-            completed: completed
-        })
-    });
 
     sessionStorage.setItem("scorePercent", percent);
+    sessionStorage.setItem("moduleName", "Sveip_trusselen_vekk");
 
     window.location.href = "/resultat";
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    const username = localStorage.getItem("brukernavn");
-    if (username) {
-        const display = document.getElementById("username-display");
-        if (display) {
-            display.textContent = `Bruker: ${username}`;
-        }
-    }
-});
 
 document.addEventListener('DOMContentLoaded', () => {
     const username = localStorage.getItem("brukernavn");
@@ -87,7 +65,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('unsafe-button').addEventListener('click', () => answer(false));
     document.getElementById('safe-button').addEventListener('click', () => answer(true));
 
-    window.onload = fetchAll;
+    fetchAll();
 });
-
-window.onload = fetchAll;
