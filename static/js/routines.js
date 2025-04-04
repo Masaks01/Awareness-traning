@@ -11,7 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById(tab.dataset.tab).style.display = 'flex';
         });
     });
+
+    const activeTab = document.querySelector('.tab.active');
+    if (activeTab) {
+        const tabId = activeTab.dataset.tab;
+        document.getElementById(tabId).style.display = 'flex';
+    }
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const username = localStorage.getItem("brukernavn");
