@@ -172,19 +172,21 @@ def api_swipe_the_threat():
 @login_required
 def api_save_progress():
     data = request.json
-    username = session.get("username")
+    username = session.get("username") or data.get("username")
     module = data.get("module_name")
     completed = data.get("completed", False)
+    score = data.get("score", "") or ""
 
     db = get_db_connection()
     cursor = db.cursor()
     cursor.execute("""
-        INSERT INTO user_progress (username, module_name, completed)
-        VALUES (%s, %s, %s)
+        INSERT INTO user_progress (username, module_name, completed, score)
+        VALUES (%s, %s, %s, %s)
         ON DUPLICATE KEY UPDATE
             completed = VALUES(completed),
+            score = VALUES(score),
             last_updated = CURRENT_TIMESTAMP
-    """, (username, module, completed))
+    """, (username, module, completed, score))
     db.commit()
     cursor.close()
     db.close()
