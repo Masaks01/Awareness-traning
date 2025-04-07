@@ -52,6 +52,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     text-decoration: none;
     color: #00467f;
     font-weight: bold;
@@ -59,13 +60,18 @@ html, body {
     transition: all 0.3s ease;
     transform: translate(-50%, -50%);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    word-wrap: break-word;
 }
 
 .module-button:hover {
-    transform: translate(-50%, -50%) scale(1.5);
+    transform: translate(-50%, -50%) scale(1.1);
+    background-color: #00c8ff;
+    color: white;
+    z-index: 10;
 }
 
-.username-display {
+#username-display {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -79,6 +85,9 @@ html, body {
 }
 
 .module-button.completed::after {
+    content: "✓";
+    position: absolute;
+    bottom: 10px;
     font-size: 1.2rem;
     color: white;
 }
