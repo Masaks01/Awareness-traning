@@ -17,19 +17,20 @@ document.addEventListener("DOMContentLoaded", () => {
                         link.classList.add("completed");
                     }
                 });
-            });
+            })
     }
 
     const circle = document.getElementById("module-circle");
     const buttons = circle.querySelectorAll(".module-button");
-    const radius = 200;
-    const centerX = circle.offsetWidth / 2;
-    const centerY = circle.offsetHeight / 2;
-
+    
+    const circleRadius = circle.offsetWidth / 2;
+    
     buttons.forEach((button, i) => {
-        const angle = (2 * Math.PI * i) / buttons.length;
-        const x = centerX + radius * Math.cos(angle);
-        const y = centerY + radius * Math.sin(angle);
+        const angle = (2 * Math.PI * i) / buttons.length - Math.PI/2;
+        
+        const x = circleRadius + circleRadius * Math.cos(angle);
+        const y = circleRadius + circleRadius * Math.sin(angle);
+        
         button.style.left = `${x}px`;
         button.style.top = `${y}px`;
 
