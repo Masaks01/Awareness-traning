@@ -222,5 +222,16 @@ def mark_completed():
     db.close()
     return {"status": "OK"}
 
+@app.route("/api/rutiner")
+@login_required
+def get_routines():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM routines")
+    routines = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return jsonify(routines)
+
 if __name__ == '__main__':
     app.run(debug=True)
