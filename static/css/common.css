@@ -4,47 +4,47 @@ body {
     color: white;
 }
 
-#dashboard-link {
-    position: fixed;
-    top: 20px;
-    left: 20px;
+#dashboard-link,
+#username-display,
+#exit-link {
     font-size: 14px;
     color: white;
+    background-color: #575656;
+    padding: 8px 14px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-decoration: none;
     z-index: 999;
+    display: inline-block;
+    max-width: fit-content;
+    transition: background-color 0.3s ease;
+    position: fixed;
+}
+
+#dashboard-link {
+    top: 20px;
+    left: 20px;
+}
+
+#exit-link {
+    top: 60px; 
+    left: 20px;
+}
+
+#username-display {
+    top: 20px;
+    right: 20px;
+}
+
+#dashboard-link:hover,
+#username-display:hover,
+#exit-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
 }
 
 #dashboard-link:hover {
     text-decoration: underline;
-}
-
-#username-display {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    font-size: 14px;
-    color: white;
-    z-index: 999;
-}
-
-@media screen and (max-width: 480px) {
-    #dashboard-link {
-        font-size: 12px;
-        top: 10px;
-        left: 10px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    body {
-        font-size: 12px;
-    }
 }
 
 a {

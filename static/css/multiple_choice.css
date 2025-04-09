@@ -8,29 +8,6 @@ html, body {
     animation: fadeIn 0.8s ease-in-out forwards;
 }
 
-#dashboard-link, #username-display {
-    color: #333;
-    padding: 15px;
-    position: absolute;
-    z-index: 10;
-}
-
-#dashboard-link {
-    top: 0;
-    left: 0;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-#dashboard-link:hover {
-    text-decoration: underline;
-}
-
-#username-display {
-    top: 0;
-    right: 15px;
-}
-
 .desk-scene {
     position: relative;
     width: 100%;

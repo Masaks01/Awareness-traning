@@ -1,30 +1,67 @@
 html, body {
     height: 100%;
-    min-height: 100vh;
-    overflow: hidden;
     margin: 0;
     padding: 0;
-}
-
-body {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
     background: linear-gradient(to bottom, #004b8d, #0b0f14);
-    text-align: center;
+    font-family: sans-serif;
     color: white;
+    text-align: center;
 }
 
 h1 {
-    margin: 30px 0 40px;
+    margin: 20px 0 16px; 
     font-size: 2.5rem;
     font-weight: 700;
 }
 
 .content-wrapper {
-    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    min-height: 100vh;
+    padding: 5;
+}
+.content-container {
+    width: 100%;
+    max-width: 1200px;       
+    height: auto;            
+    max-height: 85vh;        
+    padding: 20px 60px;     
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;        
+    box-sizing: border-box;
+}
+
+.interaction-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px; 
+    margin: 5px auto 0;
+    padding: 0 10px;
 }
 
 #card-container {
-    margin: 20px auto;
-    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    min-width: 160px;
+    gap: 16px;
+    margin: 0 auto;
 }
 
 .card {
@@ -33,13 +70,15 @@ h1 {
     font-size: 1.1rem;
     padding: 18px 24px;
     border-radius: 12px;
-    margin: 0 auto 30px;
     text-align: center;
-    width: 80%;
-    max-width: 500px;
+    width: 100%;
     cursor: grab;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    word-break: break-word;
+    white-space: normal;
+    line-height: 1.4;
+    margin: 4px 0;
 }
 
 .card.dragging {
@@ -48,30 +87,20 @@ h1 {
     box-shadow: 0 0 15px rgba(0, 200, 255, 0.4);
 }
 
-.dropzone-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    gap: 50px;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
-
 .dropzone {
-    width: 300px;
-    height: 300px;  
-    overflow-y: auto;  
-    overflow-x: hidden; 
-    border: 3px dashed #ffffff88;
-    border-radius: 14px;
-    padding: 25px;
-    background: rgba(255, 255, 255, 0.07);
-    color: white;
+    width: 280px; 
+    min-height: 440px;
+    overflow: visible;
+    border-radius: 25px;
+    padding: 16px;
     font-size: 1.1rem;
     font-weight: 600;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(6px);
     box-sizing: border-box;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), 0 8px 32px rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .dropzone .card {
@@ -80,23 +109,27 @@ h1 {
     width: 90%;
     max-width: 180px;
     box-shadow: none;
-    margin: 6px 0;
-    text-align: center;
     background-color: #f0f4ff;
     color: #000;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    word-wrap: break-word;
-    overflow-x: hidden;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 6px auto;
 }
-
 
 .dropzone.drag-over {
     background-color: rgba(0, 200, 255, 0.2);
     transform: scale(1.05);
     border-color: #00c8ff;
+}
+
+.dropzone[data-action="enig"] {
+    background: rgba(50, 205, 50, 0.25);
+    border: 1px solid rgba(50, 205, 50, 0.6);
+}
+
+.dropzone[data-action="uenig"] {
+    background: rgba(255, 99, 99, 0.25);
+    border: 1px solid rgba(255, 99, 99, 0.6);
 }
 
 .result-box {
