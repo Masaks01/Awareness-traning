@@ -2,39 +2,53 @@ let currentIndex = 0;
 let questions = [];
 let correctAnswers = 0;
 let draggedCard = null;
+let activeCards = [];
 
 fetch('/api/dra_og_slipp')
   .then(res => res.json())
   .then(data => {
     questions = data;
-    showNextCard();
+    showNextCards();
   });
 
-function showNextCard() {
+function showNextCards() {
   const container = document.getElementById('card-container');
   container.innerHTML = "";
+  activeCards = [];
 
-  if (currentIndex < questions.length) {
-    const question = questions[currentIndex];
+  const containerHeight = container.offsetHeight || 440;
+  const cardHeight = 100;
+  const gap = 16;
+  const totalCardSpace = cardHeight + gap;
 
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.textContent = question.statement;
-    card.setAttribute('draggable', true);
-    card.dataset.correct = question.correct_choice ? question.correct_choice.trim().toLowerCase() : "";
+  const maxCards = Math.floor(containerHeight / totalCardSpace);
+  const remaining = questions.length - currentIndex;
+  const cardsToShow = Math.min(maxCards, remaining);
 
-    card.addEventListener('dragstart', () => {
-      draggedCard = card;
-    });
-
-    card.addEventListener('dragend', () => {
-      draggedCard = null;
-    });
-
+  for (let i = 0; i < cardsToShow; i++) {
+    const question = questions[currentIndex + i];
+    const card = createCard(question);
     container.appendChild(card);
-  } else {
-    showResult();
+    activeCards.push({ element: card, index: currentIndex + i });
   }
+}
+
+function createCard(question) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.textContent = question.statement;
+  card.setAttribute('draggable', true);
+  card.dataset.correct = question.correct_choice?.trim().toLowerCase() || "";
+
+  card.addEventListener('dragstart', () => {
+    draggedCard = card;
+  });
+
+  card.addEventListener('dragend', () => {
+    draggedCard = null;
+  });
+
+  return card;
 }
 
 document.querySelectorAll('.dropzone').forEach(zone => {
@@ -62,19 +76,26 @@ document.querySelectorAll('.dropzone').forEach(zone => {
     draggedCard.setAttribute("draggable", false);
     draggedCard.style.cursor = "default";
 
-    setTimeout(() => {
+    const index = activeCards.find(ac => ac.element === draggedCard)?.index;
+    if (index !== undefined && index === currentIndex) {
       currentIndex++;
-      showNextCard();
-    }, 300);
+    }
+
+    const allAnswered = document.querySelectorAll('.card[draggable="true"]').length === 0
+                     && currentIndex >= questions.length;
+
+    if (allAnswered) {
+      setTimeout(showResult, 300);
+    } else {
+      setTimeout(showNextCards, 300);
+    }
   });
 });
 
 function showResult() {
   const percent = Math.round((correctAnswers / questions.length) * 100);
-
   sessionStorage.setItem("scorePercent", percent);
   sessionStorage.setItem("moduleName", "dra_og_slipp");
-
   window.location.href = "/resultat";
 }
 

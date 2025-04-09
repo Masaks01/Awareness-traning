@@ -44,8 +44,8 @@ function handleSubmit(event) {
     return;
   }
 
-  if (!isLogin && password.length < 6) {
-    showMessage("Passordet må være minst 6 tegn.");
+  if (!isLogin && password.length < 8) {
+    showMessage("Passordet må være minst 8 tegn.");
     return;
   }
 

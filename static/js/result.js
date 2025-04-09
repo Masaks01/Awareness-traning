@@ -19,9 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (gradeElement) gradeElement.innerText = grade;
     if (feedbackElement) {
-        feedbackElement.innerText = passed
-            ? "Modulen er bestått, gratulerer!"
-            : "Modulen er ikke bestått, prøv igjen!";
+        feedbackElement.innerText = generateFeedback(grade);
     }
 
     if (username && display) {
@@ -56,3 +54,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+function generateFeedback(score) {
+    switch (score) {
+        case "A":
+            return "Godt jobbet! Du har god forståelse for emnet!";
+        case "B":
+            return "Veldig bra! Du har god oversikt, men det er også fortsatt rom for forbedring.";
+        case "C":
+            return "Du har grei oversikt over emnet, modulen bør gjentas for å repetere sentrale punkter";
+        case "D":
+            return "Modulen er ikke bestått. Du er på vei, med mer øvelse vil du kunne bestå modulen";
+        case "E":
+            return "Modulen er ikke bestått. Du er på vei, med mer øvelse vil du kunne bestå modulen";
+        case "F":
+        default:
+            return "Modulen er ikke bestått. Du er på vei, med mer øvelse vil du kunne bestå modulen";
+    }
+}

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("/api/certificates")
         .then(response => response.json())
         .then(data => {
-            const tableBody = document.getElementById("certificate-body");
+            const grid = document.getElementById("certificate-grid");
             const noCertMsg = document.getElementById("no-certificates");
 
             if (!data || data.length === 0) {
@@ -18,25 +18,49 @@ document.addEventListener("DOMContentLoaded", () => {
 
             noCertMsg.style.display = "none";
 
-            const latestPerModule = new Map();
+            const scoreRank = { A: 4, B: 3, C: 2, D: 1, F: 0 };
+            const bestPerModule = new Map();
+
             data.forEach(cert => {
-                latestPerModule.set(cert.module_name, cert);
+                const module = cert.module_name;
+                const existing = bestPerModule.get(module);
+
+                const currentScore = scoreRank[cert.score] ?? -1;
+                const existingScore = scoreRank[existing?.score] ?? -1;
+
+                if (!existing || currentScore > existingScore) {
+                    bestPerModule.set(module, cert);
+                }
             });
 
-            for (const cert of latestPerModule.values()) {
-                const row = document.createElement("tr");
+            for (const cert of bestPerModule.values()) {
+                const card = document.createElement("div");
+                card.className = "certificate-card";
+                card.innerHTML = `
+                    <h2>${cert.module_name.replace(/_/g, " ").replace(/\b\w/g, l => l.toUpperCase())}</h2>
+                    <div class="certificate-info">
+                        <p><strong>Fullført:</strong> ✅</p>
+                        <p><strong>Score:</strong> ${cert.score || "–"}</p>
+                        <p><strong>Dato:</strong> ${new Date(cert.last_updated).toLocaleDateString("no-NO")}</p>
+                        <p><strong>Tilbakemelding: </strong>${generateFeedback(cert.score)}</p>
 
-                row.innerHTML = `
-                    <td>${cert.module_name.replace(/_/g, " ").replace(/\b\w/g, l => l.toUpperCase())}</td>
-                    <td>✅</td>
-                    <td>${cert.score || "–"}</td>
-                    <td>${new Date(cert.last_updated).toLocaleDateString("no-NO")}</td>
+                    </div>
                 `;
-
-                tableBody.appendChild(row);
+                grid.appendChild(card);
             }
         })
         .catch(error => {
             console.error("Feil ved henting av sertifikater:", error);
         });
 });
+
+function generateFeedback(score) {
+    switch (score) {
+        case "A":
+            return "Du har en meget god forståelse for emnet";
+        case "B":
+            return "Du har god forståelse for emnet";
+        case "C":
+            return "Du har en grei forstålse. Det kan være lurt å repetere modulen";
+    }
+}
