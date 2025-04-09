@@ -7,18 +7,18 @@
     <link rel="stylesheet" href="/static/css/common.css">
 </head>
 <body>
-    <a id="dashboard-link" href="/dashbord">← Tilbake til dashboard</a>
-    <div id="username-display"></div>
+<a id="dashboard-link" href="/dashbord">← Tilbake til dashboard</a>
+<div id="username-display"></div>
 
-    <div class="content-wrapper">
-        <h1>Sjekk om lenken er trygg!</h1>
-        <div id="card-container"></div>
-        <div class="dropzone-wrapper">
-            <div class="dropzone" data-action="enig">Enig</div>
-            <div class="dropzone" data-action="uenig">Uenig</div>
+<div class="content-container">
+    <h1>Er du enig i påstanden?</h1>
+    <div class="interaction-wrapper">
+        <div class="dropzone" data-action="enig">Enig</div>
+        <div id="card-container">
         </div>
+        <div class="dropzone" data-action="uenig">Uenig</div>
     </div>
-
+</div>
     <script src="{{ url_for('static', filename='js/drag_and_drop.js') }}"></script>
 </body>
 </html>

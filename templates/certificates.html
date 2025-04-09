@@ -10,22 +10,11 @@
     <a id="dashboard-link" href="/dashbord">← Tilbake til dashboard</a>
     <div id="username-display"></div>
 
-    <div class="certificate-container">
+    <main class="certificates-wrapper">
         <h1>Dine Sertifikater</h1>
-        <table class="certificate-table" id="certificate-table">
-            <thead>
-                <tr>
-                    <th>Modul</th>
-                    <th>Fullført</th>
-                    <th>Score</th>
-                    <th>Dato</th>
-                </tr>
-            </thead>
-            <tbody id="certificate-body">
-            </tbody>
-        </table>
+        <div class="certificates-grid" id="certificate-grid"></div>
         <p id="no-certificates">Du har ikke fullført noen moduler ennå.</p>
-    </div>
+    </main>
 
     <script src="{{ url_for('static', filename='js/certificates.js') }}"></script>
 </body>
